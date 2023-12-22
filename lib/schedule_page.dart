@@ -9,28 +9,29 @@ class SchedulePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String name = station.name;
-    bool showBundaranHITab = name != 'Bundaran HI';
-    bool showLebakBulusGrabTab = name != 'Lebak Bulus Grab';
+    bool showBundaranHITab = station.name != 'Bundaran HI';
+    bool showLebakBulusGrabTab = station.name != 'Lebak Bulus Grab';
 
     return DefaultTabController(
       length: showBundaranHITab && showLebakBulusGrabTab ? 2 : 1,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Jadwal $name'),
+          title: Text(station.name,
+              style:
+                  const TextStyle(fontSize: 24.0, fontWeight: FontWeight.w600)),
           bottom: TabBar(
             tabs: [
-              if (showBundaranHITab) Tab(text: 'Bundaran HI'),
-              if (showLebakBulusGrabTab) Tab(text: 'Lebak Bulus Grab'),
+              if (showBundaranHITab) const Tab(text: 'Bundaran HI'),
+              if (showLebakBulusGrabTab) const Tab(text: 'Lebak Bulus Grab'),
             ],
           ),
+          backgroundColor: Colors.indigo[800],
+          centerTitle: true,
         ),
         body: TabBarView(
           children: [
-            if (showBundaranHITab)
-              ScheduleList(station.scheduleBundaranHI),
-            if (showLebakBulusGrabTab)
-              ScheduleList(station.scheduleLebakBulus),
+            if (showBundaranHITab) ScheduleList(station.scheduleBundaranHI),
+            if (showLebakBulusGrabTab) ScheduleList(station.scheduleLebakBulus),
           ],
         ),
       ),
