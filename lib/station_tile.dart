@@ -12,6 +12,9 @@ class StationTile extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.all(8.0),
       shadowColor: Colors.transparent,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8.0),
+      ),
       child: ListTile(
         title: Padding(
           padding: const EdgeInsets.only(bottom: 8.0),
