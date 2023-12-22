@@ -29,30 +29,38 @@ class _MyHomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Jadwal MRT'),
+        title: const Text('MRT Jakarta',
+            style: TextStyle(
+              fontSize: 32.0,
+              fontWeight: FontWeight.bold,
+            )),
+        backgroundColor: Colors.indigo[800],
+        shadowColor: Colors.transparent,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
+      body: Column(
+        children: [
+          Container(
+            color: Colors.indigo[800],
+            padding: const EdgeInsets.all(16.0),
+            width: double.infinity,
+            child: SearchBar(
+              hintText: 'Cari stasiun keberangkatan...',
+              leading: const Icon(Icons.search, color: Colors.black),
               onChanged: filterStations,
-              decoration: InputDecoration(
-                hintText: 'Cari stasiun MRT...',
-                prefixIcon: Icon(Icons.search),
-              ),
+              padding: const MaterialStatePropertyAll<EdgeInsets>(
+                  EdgeInsets.symmetric(horizontal: 16.0)),
             ),
-            SizedBox(height: 16.0),
-            Expanded(
-              child: ListView.builder(
-                itemCount: displayedStations.length,
-                itemBuilder: (context, index) {
-                  return StationTile(displayedStations[index]);
-                },
-              ),
+          ),
+          const SizedBox(height: 16.0),
+          Expanded(
+            child: ListView.builder(
+              itemCount: displayedStations.length,
+              itemBuilder: (context, index) {
+                return StationTile(displayedStations[index]);
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
