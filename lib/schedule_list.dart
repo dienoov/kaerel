@@ -36,24 +36,35 @@ class ScheduleList extends StatelessWidget {
           ),
           child: ListTile(
             title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(filteredSchedule[index],
+                Expanded(
+                  child: Text(
+                    filteredSchedule[index],
                     style: const TextStyle(
                       fontSize: 24.0,
                       fontWeight: FontWeight.w600,
-                    )),
-                if (duration.inMinutes <= 0)
-                  const Text('Tiba',
-                      style: TextStyle(
-                        fontSize: 12.0,
-                      ))
-                else
-                  Text('Tiba dalam ${duration.inMinutes} menit',
-                      style: const TextStyle(
-                        fontSize: 12.0,
-                        color: Colors.grey,
-                      )),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.centerRight,
+                    child: (duration.inMinutes <= 0)
+                        ? const Text(
+                            'Tiba',
+                            style: TextStyle(
+                              fontSize: 12.0,
+                            ),
+                          )
+                        : Text(
+                            'Tiba dalam ${duration.inMinutes} menit',
+                            style: const TextStyle(
+                              fontSize: 12.0,
+                              color: Colors.grey,
+                            ),
+                          ),
+                  ),
+                ),
               ],
             ),
           ),
