@@ -33,6 +33,7 @@ class _MyHomePageState extends State<HomePage> {
             style: TextStyle(
               fontSize: 32.0,
               fontWeight: FontWeight.bold,
+              color: Colors.white,
             )),
         backgroundColor: Colors.indigo[800],
         shadowColor: Colors.transparent,
@@ -41,7 +42,8 @@ class _MyHomePageState extends State<HomePage> {
         children: [
           Container(
             color: Colors.indigo[800],
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.only(
+                left: 16.0, right: 16.0, bottom: 16.0, top: 8.0),
             width: double.infinity,
             child: SearchBar(
               hintText: 'Cari stasiun keberangkatan...',
@@ -49,6 +51,7 @@ class _MyHomePageState extends State<HomePage> {
               onChanged: filterStations,
               padding: const MaterialStatePropertyAll<EdgeInsets>(
                   EdgeInsets.symmetric(horizontal: 16.0)),
+              backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
             ),
           ),
           const SizedBox(height: 16.0),

@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         fontFamily: 'Plus Jakarta Sans',
-        primarySwatch: Colors.indigo,
+        colorSchemeSeed: Colors.indigo[800],
       ),
       home: HomePage(),
       title: 'MRT Jakarta',

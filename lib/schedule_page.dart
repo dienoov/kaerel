@@ -17,9 +17,13 @@ class SchedulePage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(station.name,
-              style:
-                  const TextStyle(fontSize: 24.0, fontWeight: FontWeight.w600)),
+              style: const TextStyle(
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white)),
           bottom: TabBar(
+            labelColor: Colors.white,
+            unselectedLabelColor: Colors.indigo[200],
             tabs: [
               if (showBundaranHITab) const Tab(text: 'Bundaran HI'),
               if (showLebakBulusGrabTab) const Tab(text: 'Lebak Bulus Grab'),
@@ -27,6 +31,7 @@ class SchedulePage extends StatelessWidget {
           ),
           backgroundColor: Colors.indigo[800],
           centerTitle: true,
+          iconTheme: const IconThemeData(color: Colors.white),
         ),
         body: TabBarView(
           children: [
