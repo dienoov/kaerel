@@ -10,10 +10,24 @@ class StationTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 2.0,
-      margin: EdgeInsets.symmetric(vertical: 8.0),
+      margin: const EdgeInsets.all(8.0),
+      shadowColor: Colors.transparent,
       child: ListTile(
-        title: Text(station.name),
+        title: Padding(
+          padding: const EdgeInsets.only(bottom: 8.0),
+          child: Text(
+            station.name,
+            style: const TextStyle(fontWeight: FontWeight.w600),
+          ),
+        ),
+        subtitle: Text(station.address, style: const TextStyle(fontSize: 12.0)),
+        leading: CircleAvatar(
+          backgroundColor: Colors.indigo[800],
+          child: Text(
+            station.name[0],
+            style: const TextStyle(color: Colors.white),
+          ),
+        ),
         onTap: () {
           Navigator.push(
             context,
