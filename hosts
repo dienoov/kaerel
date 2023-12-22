@@ -1,0 +1,6 @@
+127.0.0.1       localhost
+::1             ip6-localhost
+
+10.0.2.2        access.kci.id
+10.0.2.2        abox.test
+10.0.2.2        access.kci.id
