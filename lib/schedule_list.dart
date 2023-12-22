@@ -4,10 +4,11 @@ List<String> filterSchedule(List<String> schedule) {
   DateTime now = DateTime.now();
   return schedule
       .where((entry) {
-    DateTime entryTime = DateTime.parse('${now.year}-${now.month}-${now.day} $entry');
-    return entryTime.isAfter(now);
-  })
-      .take(10)
+        DateTime entryTime =
+            DateTime.parse('${now.year}-${now.month}-${now.day} $entry');
+        return entryTime.isAfter(now);
+      })
+      .take(8)
       .toList();
 }
 
@@ -19,12 +20,43 @@ class ScheduleList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<String> filteredSchedule = filterSchedule(schedule);
+    DateTime now = DateTime.now();
 
     return ListView.builder(
       itemCount: filteredSchedule.length,
       itemBuilder: (context, index) {
-        return ListTile(
-          title: Text(filteredSchedule[index]),
+        Duration duration = DateTime.parse(
+                '${now.year}-${now.month}-${now.day} ${filteredSchedule[index]}')
+            .difference(now);
+        return Card(
+          margin: const EdgeInsets.all(8.0),
+          shadowColor: Colors.transparent,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          child: ListTile(
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(filteredSchedule[index],
+                    style: const TextStyle(
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.w600,
+                    )),
+                if (duration.inMinutes <= 0)
+                  const Text('Tiba',
+                      style: TextStyle(
+                        fontSize: 12.0,
+                      ))
+                else
+                  Text('Tiba dalam ${duration.inMinutes} menit',
+                      style: const TextStyle(
+                        fontSize: 12.0,
+                        color: Colors.grey,
+                      )),
+              ],
+            ),
+          ),
         );
       },
     );
