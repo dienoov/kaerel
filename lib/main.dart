@@ -10,7 +10,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        fontFamily: 'Plus Jakarta Sans'
+        fontFamily: 'Plus Jakarta Sans',
+        primarySwatch: Colors.indigo,
       ),
       home: HomePage(),
     );
