@@ -38,32 +38,34 @@ class _MyHomePageState extends State<HomePage> {
         backgroundColor: Colors.indigo[800],
         shadowColor: Colors.transparent,
       ),
-      body: Column(
-        children: [
-          Container(
-            color: Colors.indigo[800],
-            padding: const EdgeInsets.only(
-                left: 16.0, right: 16.0, bottom: 16.0, top: 8.0),
-            width: double.infinity,
-            child: SearchBar(
-              hintText: 'Cari stasiun keberangkatan...',
-              leading: const Icon(Icons.search, color: Colors.black),
-              onChanged: filterStations,
-              padding: const MaterialStatePropertyAll<EdgeInsets>(
-                  EdgeInsets.symmetric(horizontal: 16.0)),
-              backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              color: Colors.indigo[800],
+              padding: const EdgeInsets.only(
+                  left: 16.0, right: 16.0, bottom: 16.0, top: 8.0),
+              width: double.infinity,
+              child: SearchBar(
+                hintText: 'Cari stasiun keberangkatan...',
+                leading: const Icon(Icons.search, color: Colors.black),
+                onChanged: filterStations,
+                padding: const MaterialStatePropertyAll<EdgeInsets>(
+                    EdgeInsets.symmetric(horizontal: 16.0)),
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+              ),
             ),
-          ),
-          const SizedBox(height: 16.0),
-          Expanded(
-            child: ListView.builder(
+            const SizedBox(height: 16.0),
+            ListView.builder(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
               itemCount: displayedStations.length,
               itemBuilder: (context, index) {
                 return StationTile(displayedStations[index]);
               },
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
